@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.caption, .content {
+  flex: 1;
+}
+
+.caption {
+  font-size: 14px;
+}
+
+.content {
+  text-align: end;
+}
+
+.wrapper:has(> div div select) {
+  margin-bottom: 30px;
+}
