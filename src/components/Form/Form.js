@@ -15,11 +15,16 @@ export default function Form() {
     setTotal(price + add);
   }, [add, price]);
 
+  const onClickCloseButton = () => {
+    const modal = document.getElementById('modal');
+    modal.close();
+  };
+
   return (
     <PriceContext.Provider value={{ price, setPrice, add, setAdd }}>
       <form className={style.form}>
         <h1 className={style.form__title}>Title form</h1>
-        <button className={style.form__closeButton}>&#10006;</button>
+        <button className={style.form__closeButton} onClick={onClickCloseButton}>&#10006;</button>
 
         <Wrapper>
           <input type="text" placeholder="First Name *" required />

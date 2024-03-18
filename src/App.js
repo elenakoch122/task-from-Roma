@@ -6,7 +6,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <dialog className="modal" open>
+      <dialog id="modal" open>
         <Form />
       </dialog>
     </div>
