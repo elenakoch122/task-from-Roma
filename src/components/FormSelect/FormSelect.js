@@ -1,4 +1,5 @@
-// import style from './FormSelect.module.css';
+import { useContext } from 'react';
+import { PriceContext } from '../../context/context';
 import Select from 'react-select';
 
 export default function FormSelect() {
@@ -32,6 +33,10 @@ export default function FormSelect() {
       primary25: '#d9ffff',
     },
   });
+
+  const { setPrice } = useContext(PriceContext);
+
+  const onChangeSelect = (e) => setPrice(+e.value);
   
   return (
     <>
@@ -43,6 +48,8 @@ export default function FormSelect() {
         placeholder="Select product type"
         components={{IndicatorSeparator: null }}
         theme={theme}
+        required
+        onChange={onChangeSelect}
       />
     </>
   );
