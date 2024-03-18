@@ -4,11 +4,11 @@ import Switch from "react-switch";
 
 export default function FormOption({ value }) {
   const [ isChecked, setIsCheked ] = useState(false);
-  const { setAdd } = useContext(PriceContext);
+  const { setForm } = useContext(PriceContext);
 
   const onChangeOption = () => {
     setIsCheked(!isChecked);
-    !isChecked ? setAdd(a => a + value) : setAdd(a => a - value);
+    !isChecked ? setForm(prev => ({ ...prev, addPrice: prev.addPrice + value})) : setForm(prev => ({ ...prev, addPrice: prev.addPrice - value}));
   };
 
   return (

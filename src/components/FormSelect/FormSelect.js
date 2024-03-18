@@ -34,9 +34,9 @@ export default function FormSelect() {
     },
   });
 
-  const { setPrice } = useContext(PriceContext);
+  const { setForm } = useContext(PriceContext);
 
-  const onChangeSelect = (e) => setPrice(+e.value);
+  const onChangeSelect = (e) => setForm(prev => ({ ...prev, productPrice: +e.value }));
   
   return (
     <>

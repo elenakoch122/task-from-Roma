@@ -5,37 +5,49 @@ import Wrapper from '../Wrapper/Wrapper';
 import Element from '../Element/Element';
 import FormSelect from '../FormSelect/FormSelect';
 import FormOption from '../FormOption/FormOption';
+import { checkForm } from '../checkForm';
 
 export default function Form() {
-  const [price, setPrice] = useState(0);
-  const [add, setAdd] = useState(0);
-  const [total, setTotal] = useState(0);
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    productPrice: 0,    
+    addPrice: 0,
+    totalPrice: 0,
+    comment: '', 
+  });
 
   useEffect(() => {
-    setTotal(price + add);
-  }, [add, price]);
+    setForm(prev => ({ ...prev, totalPrice: form.productPrice + form.addPrice}));
+  }, [form.addPrice, form.productPrice]);
 
   const onClickCloseButton = () => {
     const modal = document.getElementById('modal');
     modal.close();
   };
 
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    checkForm(e.target);
+  };
+
   return (
-    <PriceContext.Provider value={{ price, setPrice, add, setAdd }}>
-      <form className={style.form}>
+    <PriceContext.Provider value={{ form, setForm }}>
+      <form className={style.form} noValidate onSubmit={onSubmitForm}>
         <h1 className={style.form__title}>Title form</h1>
-        <button className={style.form__closeButton} onClick={onClickCloseButton}>&#10006;</button>
+      <button className={style.form__closeButton} onClick={onClickCloseButton} aria-label="Закрыть форму.">&#10006;</button>
 
         <Wrapper>
-          <input type="text" placeholder="First Name *" required />
+          <input type="text" name="firstName" placeholder="First Name *" required aria-label="Ввести имя, обязательно." />
         </Wrapper>
 
         <Wrapper>
-          <input type="text" placeholder="Last Name *" required />
+          <input type="text" name="last_name" placeholder="Last Name *" required aria-label="Ввести фамилию, обязательно." />
         </Wrapper>
 
         <Wrapper>
-          <input type="email" placeholder="user@gmail.com *" required />
+          <input type="email" name="email" placeholder="user@gmail.com *" required aria-label="Ввести email, обязательно." />
         </Wrapper>
 
         <Element text="Product type *">
@@ -55,11 +67,11 @@ export default function Form() {
         <textarea placeholder="Type your comment" rows={4}></textarea>
 
         <Element text="Total price">
-          <span className={style.form__sum}>${total}</span>
+          <span className={style.form__sum}>${form.totalPrice}</span>
         </Element>
 
         <div className={style.form__sendButton__wrapper}>
-          <button className={style.form__sendButton}>Send form</button>
+          <button className={style.form__sendButton} aria-label="Отправить форму.">Send form</button>
         </div>
       </form>
     </PriceContext.Provider>
