@@ -14,7 +14,7 @@
   content: 'Please fill in email';
 }
 
-.error:has(> select)::after {
+.error:has(> div[class^=select])::after {
   content: 'Please select product type';
   left: 0;
 }
@@ -26,7 +26,7 @@
   color: red;
 }
 
-.error input, .error select {
+.error input, .error div div[class^=select__control] {
   background-color: #ffd4d4;
   border-color: red;
 }

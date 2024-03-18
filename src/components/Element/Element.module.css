@@ -13,10 +13,6 @@
   font-size: 14px;
 }
 
-.content {
+.content:not(:has(div[class^=select])) {
   text-align: end;
-}
-
-.wrapper:has(> div div select) {
-  margin-bottom: 30px;
 }

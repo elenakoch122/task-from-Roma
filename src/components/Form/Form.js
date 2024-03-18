@@ -1,6 +1,7 @@
 import style from './Form.module.css';
 import Wrapper from '../Wrapper/Wrapper';
 import Element from '../Element/Element';
+import FormSelect from '../FormSelect/FormSelect';
 
 export default function Form() {
   return (
@@ -21,14 +22,8 @@ export default function Form() {
       </Wrapper>
 
       <Element text="Product type *">
-        <Wrapper isValid={false}>
-          {/* установить react-select */}
-          <select name="product" placeholder="Select product type">
-            <option value="">Select product type</option>
-            <option value="50">Product $50</option>
-            <option value="100">Product $100</option>
-            <option value="300">Product $300</option>
-          </select>
+        <Wrapper>
+          <FormSelect />
         </Wrapper>
       </Element>
 

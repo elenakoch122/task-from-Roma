@@ -22,23 +22,23 @@ body {
   background-color: #666;
 }
 
-input, select, textarea, button {
+input, textarea, button {
   border-radius: 3px;
   outline: none;
 }
 
-input, select, textarea {
+input, textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #bbb;
 }
 
-input::placeholder, select::placeholder, textarea::placeholder {
+input::placeholder, textarea::placeholder {
   color: #bbb;
 }
 
-input:focus, select:focus, textarea:focus, button:focus {
-  border-color: #89ccf3;
+input:focus, textarea:focus, button:focus {
+  outline: 2px solid #89ccf3;
 }
 
 input, textarea {
@@ -47,11 +47,11 @@ input, textarea {
   font-size: 16px;
 }
 
-select {
-  font-size: 14px;
-}
-
 button {
   padding: 15px 25px;
   border: none;
+}
+
+div.select__control:hover {
+  border-color: #bbb;
 }
