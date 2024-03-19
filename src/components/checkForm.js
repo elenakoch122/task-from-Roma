@@ -12,20 +12,31 @@ export const checkForm = (form, formData) => {
 };
 
 const checkEl = (el) => {
-  if (!el.name || el.name === 'comment') return;
-  if (!el.value) return addError(el);
-  if (el.type === 'email' && !validateEmail(el.value)) return addError(el);
+  const { name, value, type } = el;
+
+  if (!name || name === 'comment') return;  
+  if (!value) return addError(el);
+  if (type === 'email' && !validateEmail(value)) return addError(el, type);
+
   deleteError(el);
 };
 
-const addError = (el) => {
+const addError = (el, type = '') => {
   const error = el.closest('.error');
-  if (!error) el.closest('.wrapper').classList.add('error');
+  const wrapper = el.closest('.wrapper');
+
+  if (!error) wrapper.classList.add('error');
+  if (!type && el.type === 'email') wrapper.classList.remove('error__email');
+  if (type === 'email') wrapper.classList.add('error__email');
 };
 
 const deleteError = (el) => {
   const error = el.closest('.error');
-  if (error) error.classList.remove('error');
+  if (error) {
+    error.classList.remove('error');
+    if (el.type === 'email') error.classList.remove('error__email');
+  }
+  
 };
 
 const validateEmail = (email) => {

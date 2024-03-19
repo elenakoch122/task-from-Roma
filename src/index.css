@@ -67,6 +67,10 @@ div.select__control:hover {
   content: 'Please fill in email';
 }
 
+.error__email:has(> input[type=email])::after {
+  content: 'Please enter a valid email address';
+}
+
 .error:has(> div[class^=select])::after {
   content: 'Please select product type';
   left: 0;
@@ -115,6 +119,10 @@ div.select__control:hover {
   left: 10px;
   font-size: 10px;
   color: #bbb;
+}
+
+.filled.error__email::before {
+  color: red;
 }
 
 .filled input, .filled textarea {
