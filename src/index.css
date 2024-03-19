@@ -16,7 +16,7 @@ input, textarea, button {
 
 input, textarea {
   width: 100%;
-  padding: 10px;
+  padding: 15px 10px;
   border: 1px solid #bbb;
 }
 
@@ -86,4 +86,37 @@ div.select__control:hover {
 
 .error input::placeholder {
   color: red;
+}
+
+.filled {
+  position: relative;
+}
+
+.filled:has(> input[placeholder^=First])::before {
+  content: 'First Name *';
+}
+
+.filled:has(> input[placeholder^=Last])::before {
+  content: 'Last Name *';
+}
+
+.filled:has(> input[type=email])::before {
+  content: 'user@gmail.com *';
+}
+
+.filled:has(> textarea)::before {
+  content: 'Type your comment';
+}
+
+.filled::before {
+  z-index: 1;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 10px;
+  color: #bbb;
+}
+
+.filled input, .filled textarea {
+  padding: 25px 10px 5px;
 }

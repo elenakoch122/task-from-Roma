@@ -29,6 +29,9 @@ export default function Form() {
   const onChangeInput = (e) => {
     const { name, value } = e.target;
     setForm(prev => ({ ...prev, [name]: value }));
+    
+    const wrapper = e.target.closest('.wrapper');
+    value ? wrapper.classList.add('filled') : wrapper.classList.remove('filled');
   };
 
   const onSubmitForm = (e) => {
@@ -89,13 +92,15 @@ export default function Form() {
           <FormOption value={200} />
         </Element>
 
-        <textarea
-          rows={4}
-          name='comment'
-          value={form.comment}
-          onChange={onChangeInput}
-          placeholder="Type your comment"
-        ></textarea>
+        <div className='wrapper'>
+          <textarea
+            rows={4}
+            name='comment'
+            value={form.comment}
+            onChange={onChangeInput}
+            placeholder="Type your comment"
+          ></textarea>
+        </div>
 
         <Element text="Total price">
           <span className={style.form__sum}>${form.totalPrice}</span>
