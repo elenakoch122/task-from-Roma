@@ -13,7 +13,7 @@ export default function FormSelect() {
     placeholder: (defaultStyles, state) => {
       return {
         ...defaultStyles,
-        color: state.isOptionSelected ? '#bbb' : 'red',
+        color: '#bbb',
       }
     },
     control: (defaultStyles, state) => ({
@@ -43,6 +43,7 @@ export default function FormSelect() {
       <Select
         className="select-container"
         classNamePrefix="select"
+        name='productPrice'
         options={options}
         styles={colourStyles}
         placeholder="Select product type"

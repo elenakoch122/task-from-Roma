@@ -1,16 +1,3 @@
-/* body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
-
 * {
   margin: 0;
   padding: 0;
@@ -52,6 +39,51 @@ button {
   border: none;
 }
 
+div.select__control {
+  font-size: 14px;
+}
+
 div.select__control:hover {
   border-color: #bbb;
+}
+
+.error .select__placeholder {
+  color: red;
+}
+
+.error {
+  position: relative;
+}
+
+.error:has(> input[placeholder^=First])::after {
+  content: 'Please fill in first name';
+}
+
+.error:has(> input[placeholder^=Last])::after {
+  content: 'Please fill in last name';
+}
+
+.error:has(> input[type=email])::after {
+  content: 'Please fill in email';
+}
+
+.error:has(> div[class^=select])::after {
+  content: 'Please select product type';
+  left: 0;
+}
+  
+.error::after {
+  position: absolute;
+  bottom: -15px;
+  font-size: 10px;
+  color: red;
+}
+
+.error input, .error div div[class^=select__control] {
+  background-color: #ffd4d4; 
+  border-color: red;
+}
+
+.error input::placeholder {
+  color: red;
 }
