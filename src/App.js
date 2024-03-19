@@ -2,7 +2,7 @@ import './App.css';
 import Form from './components/Form/Form';
 
 export default function App() {
-  document.title = 'Modal';
+  document.title = 'Title form';
 
   return (
     <div className="App">
